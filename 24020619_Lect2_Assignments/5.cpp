@@ -1,6 +1,5 @@
 #include <iostream>
 #include <string>
-#include <sstream>
 using namespace std;
 
 class Node{
@@ -22,6 +21,9 @@ void insert(Node* head, int x){
     temp->next = newNode;
 }
 void deleteNode(Node*& head){
+    if (head == nullptr){
+        return;
+    }
     Node* temp = head;
     while (temp->next->next != nullptr){
         temp = temp->next;
@@ -34,20 +36,17 @@ int main(){
     cin.ignore();
     Node* head = nullptr;
     for (int i = 0; i < ops; i++){
-        string line;
-        getline(cin, line);
-        stringstream ss(line);
         string op;
-        ss >> op;
+        cin >> op;
         if (op == "push"){
             if (head == nullptr){
                 int x;
-                ss >> x;
+                cin >> x;
                 head = new Node(x);
             }
             else {
                 int x;
-                ss >> x;
+                cin >> x;
                 insert(head, x);
             }
         }
