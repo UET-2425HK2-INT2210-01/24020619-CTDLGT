@@ -1,38 +1,30 @@
 #include <iostream>
-#include <vector>
 #include <string>
-#include <sstream>
 using namespace std;
 
-class node
-{
+class node{
 public:
     int data;
     node *next;
-    node(int data)
-    {
+    node(int data){
         this->data = data;
         this->next = nullptr;
     }
 };
 
-void insert(node *head, int p, int x)
-{
+void insert(node *head, int p, int x){
     node *newNode = new node(x);
     node *temp = head;
-    for (int i = 0; i < p - 1; i++)
-    {
+    for (int i = 0; i < p - 1; i++){
         temp = temp->next;
     }
     newNode->next = temp->next;
     temp->next = newNode;
 }
 
-void delete_node(node *head, int p)
-{
+void delete_node(node *head, int p){
     node *temp = head;
-    for (int i = 0; i < p - 1; i++)
-    {
+    for (int i = 0; i < p - 1; i++){
         temp = temp->next;
     }
     node *temp2 = temp->next;
@@ -40,41 +32,31 @@ void delete_node(node *head, int p)
     delete temp2;
 }
 
-int main()
-{
+int main(){
     int ops;
     cin >> ops;
     cin.ignore();
     node* head = nullptr;
-    for (int i = 0; i <= ops; i++)
-    {
-        string line;
-        getline(cin, line);
-        stringstream ss(line);
+    for (int i = 0; i < ops; i++){
         string op;
-        ss >> op;
-        if (op == "insert")
-        {
+        cin >> op;
+        if (op == "insert"){
             int p, x;
-            ss >> p >> x;
-            if (head == nullptr)
-            {
+            cin >> p >> x;
+            if (head == nullptr){
                 head = new node(x);
             }
-            else
-            {
+            else{
                 insert(head, p, x);
             }
         }
-        else if (op == "delete")
-        {
+        else if (op == "delete"){
             int p;
-            ss >> p;
+            cin >> p;
             delete_node(head, p);
         }
     }
-    while (head != nullptr)
-    {
+    while (head != nullptr){
         cout << head->data << " ";
         head = head->next;
     }
