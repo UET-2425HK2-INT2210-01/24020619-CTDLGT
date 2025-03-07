@@ -1,0 +1,24 @@
+// pseudo code of 2.cpp
+
+function calculate1(N)
+    // time complexity O(N)
+    result = 1
+    for i = 1 to N
+        result = result * 2
+        end for
+
+    return result
+end function 
+
+// time complexity O(logN) || space complexity O(1)
+function calculate2(N)
+    if N == 0 then
+        return 1
+    end if
+    
+    if N % 2 != 0 then
+        return 2 * calculate2(N - 1)
+    else
+        return calculate2(N / 2) * calculate2(N / 2)
+    end if
+end function
