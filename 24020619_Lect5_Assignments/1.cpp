@@ -125,7 +125,7 @@ int main() {
         cin >> parent >> child;
         tree.addNode(parent, child);
     }
-    cout << tree.height(tree.root) << endl;
+    cout << tree.height(tree.root) - 1 << endl;
     tree.preOrder(tree.root); cout << endl;
     tree.postOrder(tree.root); cout << endl;
     if (tree.isBinaryTree(tree.root)) {
